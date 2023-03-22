@@ -55,11 +55,14 @@ class SecurityController extends AbstractController
 
     ////////// GESTION DONNEES PERSONNELLES UTILISATEUR //////////
     #[Route('/account', name: 'security_account')]
-    public function account(): Response
+    public function account(Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $passwordHasher): Response
     {
 
+
         // Envoi du FORM vers TWIG
-        return $this->render('security/account.html.twig', []);
+        return $this->render('security/register.html.twig', [
+            
+        ]);
     }
 
     ////////// GESTION DE LA CONNEXION & DECONNEXION //////////
@@ -77,4 +80,7 @@ class SecurityController extends AbstractController
             'error'         => $error,
         ]);
     }
+
+    #[Route('/logout', name: 'security_logout', methods: ['GET'])]
+    public function logout() {}
 }
