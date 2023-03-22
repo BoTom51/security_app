@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{# {% form_theme form 'bootstrap_5_layout.html.twig' %} #}
+
+{% block body %}
+
+   <h1>Entrez vos informations personnelles !</h1>
+
+	{{ form_start(form) }}
+	<div class="form-group">
+
+		{{ form_row(form.email, {'label': 'Identifiant','attr': {'placeholder': 'Adresse email !'}}) }}
+		{{ form_row(form.password.first, {
+			'label': 'Mot de passe',
+			'attr': {
+				'placeholder': 'Mot de passe !',
+				'class': 'password-field'
+			},
+		}) }}
+		{{ form_row(form.password.second, {
+			'label': 'Confirmation du Mot de passe',
+			'attr': {
+				'placeholder': 'Confirmez le Mot de passe !',
+				'class': 'password-field'
+			},
+		}) }}
+		{{ form_row(form.submit, {'label': 'Inscription', 'attr': {'class': 'btn btn-success'}}) }}
+		
+		{{ form_errors(form) }} {# affiche les erreurs du form #}
+	</div>
+	{{ form_end(form, {'render_rest': false}) }} {# block le rendu automatique des champs restant non affiché #}
+
+{% endblock %}
